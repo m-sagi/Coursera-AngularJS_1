@@ -13,18 +13,31 @@
         var count = totalCount($scope.lunchmenu);
         if (count > 3) {
           $scope.message = "Too much!";
-        }
-        else{
+          $scope.text = "green";
+        }else if (count == 0) {
+          $scope.message = "Please enter valid data";
+          $scope.text = "red";
+        }else{
           $scope.message = "Enjoy!";
+          $scope.text = "green";
         }
       }else{
         $scope.message = "Please enter data first";
+        $scope.text = "red";
+
       }
     };
   }
   function totalCount(input){
     var items_array = input.split(',');
-    return items_array.length;
+    var total_items = items_array.length;
+    var i = 0;
+    for(var k=0; k < items_array.length; k++){
+      if (items_array[k].length){
+        i++;
+      }
+    }
+    return i;
   }
 
 
